@@ -1,0 +1,22 @@
+{
+  "name": "CS1",
+  "short_name": "CS1",
+  "description": "Introduction to Computer Science",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "type": "image/png",
+      "src": "https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2FCS1_192.png?1552299344920"
+    },
+    {
+      "sizes": "512x512",
+      "type": "image/png",
+      "src": "https://cdn.glitch.com/f8abb766-9950-44ff-9adb-2f5f53fdaf1b%2FCS1.png?1552299028732"
+    }
+  ],
+  "display": "fullscreen",
+  "orientation":"landscape",
+  "background_color": "white",
+  "theme_color": "maroon",
+  "start_url": "/index.html"
+}
