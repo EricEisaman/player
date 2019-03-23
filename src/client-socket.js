@@ -21,6 +21,11 @@ export default CS1=>{
     else document.getElementById('login-msg').innerHTML = data.msg;
   });
   
+  socket.on('anim', data=>{
+    let clips = ['idle','walk'];
+    CS1.otherPlayers[data.id].firstElementChild.setAttribute('animation-mixer',`clip:${clips[data.anim]}`);
+  });
+  
   socket.on('disconnect', ()=>{
     console.log('I have disconnected.');
     socket.isInitialized = false;
