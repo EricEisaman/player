@@ -8,6 +8,7 @@ export default CS1=>{
       if(this.data.me){
         this.isWalking=false;
         this.setKeyCtls();
+        this.setTouchCtls();
         this.setAvatarChoices();
       }
     },
@@ -19,9 +20,10 @@ export default CS1=>{
            case 38:
            case 83:
            case 40:
-             if(!this.isWalking)
+             if(!this.isWalking){
                CS1.socket.emit('anim',1);
-               this.isWalking=true;
+               this.isWalking=true;    
+             }       
          }
       });
       document.body.addEventListener('keyup',e=>{
@@ -34,6 +36,18 @@ export default CS1=>{
              CS1.socket.emit('anim',0);
              this.isWalking=false;
          }
+      });
+    },
+    setTouchCtls: function(){
+      window.addEventListener('touchstart',e=>{
+        if(!this.isWalking){
+               CS1.socket.emit('anim',1);
+               this.isWalking=true;    
+             }    
+      });
+      window.addEventListener('touchend',e=>{
+         CS1.socket.emit('anim',0);
+         this.isWalking=false;
       });
     },
     setAvatarChoices: function(){
