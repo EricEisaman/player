@@ -50,7 +50,8 @@ export default CS1=>{AFRAME.registerComponent('game', {
     
     CS1.scene=AFRAME.scenes[0];
     
-    CS1.myPlayer.components["movement-controls"].data.speed=0;
+    //uncomment to make player wait until player joined sound is done
+    //CS1.myPlayer.components["movement-controls"].data.speed=0;
     
     CS1.otherPlayers = {};
     

@@ -43,7 +43,7 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
       });
       if(data.collector==CS1.socket.id && collectedEntity.data.affects){  
         if(collectedEntity.data.affects.includes('avatar')){
-           CS1.myPlayer.components.player.setSpeed(0.6);
+           CS1.myPlayer.components.player.setSpeed(0.8);
            console.log('speed boost');
         }else  
         CS1.hud[collectedEntity.data.affects].changeBy(collectedEntity.data.value);
