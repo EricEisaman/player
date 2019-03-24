@@ -34,7 +34,7 @@ export default CS1=>{AFRAME.registerComponent("collectible", {
       //collectedEntity.el.setAttribute('scale','0 0 0');
       collectedEntity.soundIsPlaying=true;
       collectedEntity.el.components.sound__collect.playSound();
-      if(collectedEntity.data.cb){
+      if(collectedEntity.data.cb && !AFRAME.utils.device.isMobile()){
         CS1.game[collectedEntity.data.cb](collectedEntity.el);
       }
       collectedEntity.el.addEventListener('sound-ended',e=>{
