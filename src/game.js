@@ -17,7 +17,7 @@ export default CS1=>{AFRAME.registerComponent('game', {
     
     
     
-    CS1.op_template = document.querySelector('#other-player-avatar');
+    CS1.op_template = document.querySelector('#starter-avatar');
     
     
   
@@ -52,11 +52,15 @@ export default CS1=>{AFRAME.registerComponent('game', {
     console.log(`Adding new player with id: ${newPlayerObject.id}`)
     console.log(newPlayerObject);
     console.log(newPlayerObject.data);
+    let c = config.avatar.models[newPlayerObject.data.faceIndex];
     let p = document.createElement('a-entity');
-    p.model = CS1.op_template.cloneNode();
+    // p.model = CS1.op_template.cloneNode();
+    p.model = document.createElement('a-gltf-model');
+    p.model.setAttribute('src',`${c.url}`);
     p.appendChild(p.model);
     p.setAttribute('player','');
     p.model.setAttribute('visible','true');
+    p.model.setAttribute('animation-mixer','clip:idle');
     p.id = newPlayerObject.id;
     p.name = newPlayerObject.name;
     p.setAttribute('position',`${newPlayerObject.data.position.x} ${newPlayerObject.data.position.y+0.7} ${newPlayerObject.data.position.z}`);
@@ -86,11 +90,11 @@ export default CS1=>{AFRAME.registerComponent('game', {
             op.faceIndex = o[key].faceIndex;
           }
           op.faceIndex = o[key].faceIndex;
-          op.setAttribute('position',`${o[key].position.x} ${o[key].position.y+0.7} ${o[key].position.z}`);
+          op.setAttribute('position',`${o[key].position.x} ${o[key].position.y+c.yOffset} ${o[key].position.z}`);
           op.model.setAttribute('rotation',`${-o[key].rotation.x} ${o[key].rotation.y+180} ${o[key].rotation.z}`);
-          // op.model.setAttribute('gltf-model',`url(${c.url})`);
-          // op.model.setAttribute('animation-mixer',`clip:${c.animations.idle}`);
-          // op.model.setAttribute('scale',`${c.scale} ${c.scale} ${c.scale}`);
+          op.model.setAttribute('src',`${c.url}`);
+          //op.model.setAttribute('animation-mixer',`clip:${op.faceIndex}`);
+          op.model.setAttribute('scale',`${c.scale} ${c.scale} ${c.scale}`);
           op.msg.setAttribute('text',`color:${c.msg.color}`);
           op.msg.setAttribute('position',`${c.msg.offset}`);
         }
@@ -170,7 +174,5 @@ export default CS1=>{AFRAME.registerComponent('game', {
   fireParticles: function(el){
     el.components.particles.fire();
   }
-  
-  
-  
+   
 });}

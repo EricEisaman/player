@@ -115,7 +115,10 @@ module.exports = (io)=>{
         });
         socket.on('anim',function(data){
           socket.broadcast.emit('anim',{id:socket.id,anim:data});
-        });    
+        });
+        socket.on('avatar',function(data){
+          socket.broadcast.emit('avatar',{id:socket.id,avatar:data});
+        });
         socket.on('initial-bodies-state',obj=>{
           console.log('Initial bodies state received.');
           bodies = obj;
