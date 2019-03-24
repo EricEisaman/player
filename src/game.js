@@ -65,6 +65,7 @@ export default CS1=>{AFRAME.registerComponent('game', {
       p.model.setAttribute('src',`${c.url}`);
       p.appendChild(p.model);
       p.setAttribute('player','');
+      p.model.setAttribute('shadow','');
       p.model.setAttribute('visible','true');
       p.model.setAttribute('animation-mixer','clip:idle');
       p.id = newPlayerObject.id;
