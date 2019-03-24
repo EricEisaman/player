@@ -78,7 +78,7 @@ ____
 
 🍎 Player Component
 - instantiated for all players
-- **setAvatar** and **setAnimation** methods (TODO)
+- avatars and animation clips can be changed dynamically
 
 ____
 
