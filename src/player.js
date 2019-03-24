@@ -8,6 +8,7 @@ export default CS1=>{
       if(this.data.me){
         this.isWalking=false;
         this.setKeyCtls();
+        this.setAvatarChoices();
       }
     },
     setKeyCtls: function(){
@@ -35,14 +36,36 @@ export default CS1=>{
          }
       });
     },
+    setAvatarChoices: function(){
+      this.avatar_0 = document.querySelector('#starter-avatar');
+      this.avatar_1 = document.querySelector('#avatar-upgrade');
+      this.avatarUpgradeZone = document.querySelector('#avatar-upgrade-zone');
+    },
     tick: function(t,dt){
     
+     
     },
-    setAvatar: function(src){
-      console.log('setting avatar . . .');
+    
+    setAvatar: function(data){
+      if(!this.avatar_1)this.avatar_1 = document.querySelector('#avatar-upgrade');
+      this.avatar_0 = this.el.firstElementChild;
+      CS1.scene.appendChild(this.avatar_0);
+      this.avatar_0.setAttribute('visible',false);
+      if(data==1){
+        this.avatar_1.setAttribute('position','0 8 0');
+        this.avatar_1.setAttribute('scale','2 2 2');
+        this.avatar_1.setAttribute('rotation','0 180 0');
+        this.avatar_1.setAttribute('animation-mixer','clip:idle');
+        this.el.model = this.avatar_1;
+        this.el.appendChild(this.avatar_1);}
+      else{
+      
+      }
+      
     },
-    setAnimation: function(name){
-      console.log('setting animation . . .');
+    
+    setSpeed: function(s){
+      this.el.setAttribute('movement-controls',`constrainToNavMesh: true; speed: ${s}`);
     }
     
   });
